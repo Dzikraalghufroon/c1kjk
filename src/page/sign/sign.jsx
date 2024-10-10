@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const RegistrationForm = () => {
+    const [nickName, setnickName] = useState('');
     const [nama, setNama] = useState('');
     const [pass, setPass] = useState('');
     const [gender, setGender] = useState('');
@@ -32,6 +33,7 @@ const RegistrationForm = () => {
         e.preventDefault();
         try {
             const response = await axios.post(`${import.meta.env.VITE_SERVER}/api/validation/sign`, {
+                nickName,
                 nama,
                 pass,
                 gender,
@@ -56,85 +58,97 @@ const RegistrationForm = () => {
     };
 
     return (
-        <div className="container">
-            <div className="title">Registration</div>
-            <div className="content">
-                <form onSubmit={handleSignIn}>
-                    <div className="user-details">
-                        <div className="input-box">
-                            <span className="details">Full Name</span>
-                            <input
-                                type="text"
-                                placeholder="Enter your name"
-                                value={nama}
-                                onChange={(e) => setNama(e.target.value)}
-                                required
-                            />
+        <div className='sign'>
+            <div className="container">
+                <div className="title">Registration</div>
+                <div className="content">
+                    <form onSubmit={handleSignIn}>
+                        <div className="user-details">
+                            <div className="input-box">
+                                <span className="details">Full Name</span>
+                                <input
+                                    type="text"
+                                    placeholder="Enter your name"
+                                    value={nama}
+                                    onChange={(e) => setNama(e.target.value)}
+                                    required
+                                />
+                            </div>
+                            <div className="input-box">
+                                <span className="details">nickName</span>
+                                <input
+                                    type="text"
+                                    placeholder="Enter your nickname"
+                                    value={nickName}
+                                    onChange={(e) => setnickName(e.target.value)}
+                                    required
+                                />
+                            </div>
+                            <div className="input-box">
+                                <span className="details">Password</span>
+                                <input
+                                    type="password"
+                                    placeholder="Enter your password"
+                                    value={pass}
+                                    onChange={(e) => setPass(e.target.value)}
+                                    required
+                                />
+                            </div>
+                            <div className="input-box">
+                                <span className="details">Room</span>
+                                <input
+                                    type="text"
+                                    placeholder="Enter your room"
+                                    value={room}
+                                    onChange={(e) => setRoom(e.target.value)}
+                                    required
+                                />
+                            </div>
+                            <div className="input-box">
+                                <span className="details">Kelas</span>
+                                <select
+                                    value={kelas}
+                                    onChange={(e) => setKelas(e.target.value)}
+                                    required
+                                >
+                                    <option value="" disabled>Select your class</option>
+                                    <option value="10.A">10.A</option>
+                                    <option value="11.B">11.B</option>
+                                    <option value="12.A">12.A</option>
+                                    <option value="12.B">12.B</option>
+                                </select>
+                            </div>
+                            <div className="input-box">
+                                <span className="details">Asrama</span>
+                                <input
+                                    type="text"
+                                    placeholder="Enter your dormitory"
+                                    value={asrama}
+                                    onChange={(e) => setAsrama(e.target.value)}
+                                    required
+                                />
+                            </div>
+                            <div className="input-box">
+                                <span className="details">Gender</span>
+                                <select
+                                    value={gender}
+                                    onChange={(e) => setGender(e.target.value)}
+                                    required
+                                >
+                                    <option value="" disabled>Select your gender</option>
+                                    <option value="laki-laki">Male</option>
+                                    <option value="perempuan">Female</option>
+                                    <option value="Prefer not to say">Prefer not to say</option>
+                                </select>
+                            </div>
                         </div>
-                        <div className="input-box">
-                            <span className="details">Password</span>
-                            <input
-                                type="password"
-                                placeholder="Enter your password"
-                                value={pass}
-                                onChange={(e) => setPass(e.target.value)}
-                                required
-                            />
-                        </div>
-                        <div className="input-box">
-                            <span className="details">Room</span>
-                            <input
-                                type="text"
-                                placeholder="Enter your room"
-                                value={room}
-                                onChange={(e) => setRoom(e.target.value)}
-                                required
-                            />
-                        </div>
-                        <div className="input-box">
-                            <span className="details">Kelas</span>
-                            <select
-                                value={kelas}
-                                onChange={(e) => setKelas(e.target.value)}
-                                required
-                            >
-                                <option value="" disabled>Select your class</option>
-                                <option value="10.A">10.A</option>
-                                <option value="11.B">11.B</option>
-                                <option value="12.A">12.A</option>
-                                <option value="12.B">12.B</option>
-                            </select>
-                        </div>
-                        <div className="input-box">
-                            <span className="details">Asrama</span>
-                            <input
-                                type="text"
-                                placeholder="Enter your dormitory"
-                                value={asrama}
-                                onChange={(e) => setAsrama(e.target.value)}
-                                required
-                            />
-                        </div>
-                        <div className="input-box">
-                            <span className="details">Gender</span>
-                            <select
-                                value={gender}
-                                onChange={(e) => setGender(e.target.value)}
-                                required
-                            >
-                                <option value="" disabled>Select your gender</option>
-                                <option value="laki-laki">Male</option>
-                                <option value="perempuan">Female</option>
-                                <option value="Prefer not to say">Prefer not to say</option>
-                            </select>
-                        </div>
-                    </div>
 
-                    <div className="button">
-                        <input type="submit" value="Register" />
-                    </div>
-                </form>
-                {message && <p>{message}</p>}
+                        <div className="button">
+                            <input type="submit" value="Register" />
+                        </div>
+                    </form>
+                    {message && <p>{message}</p>}
+                </div>
             </div>
         </div>
     );

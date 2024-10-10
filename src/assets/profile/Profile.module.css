@@ -1,0 +1,90 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    background-color: #e0e0e0;
+    top: 0;
+    right: 0;
+  }
+  
+  .chart {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+  }
+  
+  .center {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: 150px;
+    background-color: rgb(0, 0, 0);
+    border-radius: 50%;
+    z-index: 10;
+  }
+  
+  .section {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    border: none;
+    cursor: pointer;
+    transform-origin: 100% 100%;
+    border-radius: 0 100% 100% 0; /* Mengubah ini agar bentuknya lebih sesuai */
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+  
+  .section5 {
+    background-color: #3f51b5;
+    transform: rotate(0deg); /* Rotasi pertama */
+  }
+  
+  .section4 {
+    background-color: #4caf50;
+    transform: rotate(72deg); /* 72 derajat dari yang pertama */
+  }
+  
+  .section3 {
+    background-color: #00bcd4;
+    transform: rotate(144deg);
+  }
+  
+  .section2 {
+    background-color: #ffc107;
+    transform: rotate(216deg);
+  }
+  
+  .section1 {
+    background-color: #ff5722;
+    transform: rotate(288deg);
+  }
+  
+  .section:hover {
+    opacity: 0.8;
+    /* background: linear-gradient(20degg,#3f51b5, #3f51b5); */
+  }
+  
+  .section:active {
+    transform: scale(0.95);
+  }
+  @media screen and (max-width: 768px) {
+    .section{
+        left: 30px;
+        width: 40%;
+        height: 40%;
+    }
+    .center{
+        left: 50%;
+        /* position: relative; */
+        width: 40%;
+        height: 40%;
+        top: 120px;
+    }
+}
+  

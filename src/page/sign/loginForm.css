@@ -1,0 +1,95 @@
+/* Pastikan html dan body memenuhi layar */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Latar belakang dan penempatan form login */
+  .login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    width: 100%;
+    top: 0;
+    right: 0;
+    position: fixed;
+    background: url('./walpp.jpeg') no-repeat center center/cover;
+  }
+  
+  .login-container {
+    background: rgba(255, 255, 255, 0.15); /* Transparansi untuk form */
+    backdrop-filter: blur(10px); /* Efek blur */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  .login-title {
+    font-size: 24px;
+    color: white;
+    margin-bottom: 20px;
+  }
+  
+  .login-content input[type="text"], 
+  .login-content input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+  }
+  
+  .login-content input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff7f50; /* Warna tombol */
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-content input[type="submit"]:hover {
+    background-color: #ff6347;
+  }
+  
+  .login-details {
+    font-size: 14px;
+    color: white;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .button1 {
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .button1:hover {
+    background-color: #f0f0f0;
+  }
+  
+  p {
+    color: white;
+  }
+  @media screen and (max-width: 768px) {
+    .login{
+        /* position: relative; */
+        width: 100%;
+    }
+}
+  
