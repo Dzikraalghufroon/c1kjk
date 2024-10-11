@@ -269,7 +269,7 @@
   /* background: linear-gradient(60deg, rgb(84, 96, 168) 20%, rgb(126, 138, 206) 0%, rgb(112, 211, 224) 100%); */
   top: 70vh;
   margin-top: 40px;
-  opacity: 0.5;
+  opacity: 0.9;
   color: black;
   left: 20%;
   border-radius: 10px;
@@ -301,4 +301,37 @@
   margin-left: 10%;
   position: absolute;
   top: 112vh;
+}
+@media (max-width: 768px) {
+  .Mhatta,
+  .Kata2,
+  .container2{
+    display: none;
+  }
+  .BuyaHamka{
+    right: 0;
+  }
+  .Kata{
+    right: 20%;
+  }
+  .container{
+    width: 80%;
+  }
+  .Date{
+    width: 90%;
+    top: 60%;
+  }
+  .koleksi{
+    width: 80%;
+    top: 140%;
+    /* margin-bottom: 20%; */
+    /* z-index: 100; */
+    /* right: 100ch; */
+  }
+  .container3{
+    top: 160%;
+    width: 30%;
+    height: 200px;
+  }
+
 }

@@ -129,23 +129,23 @@ const CircleButtons = () => {
             <p>Loading...</p>
           ) : Buku && Buku.length > 0 ? (
             Buku.map((item) => (
-              <ul key={item.id} className={styles.questionItem}>
+              <ul key={item.id} className={Styles.questionItem}>
 
                 <li>{item.name}</li>
 
                 <li>{item.reg_date}</li>
 
                 <li>{item.soal}</li>
-                <li><a className={styles.a} onClick={() => navigate(`/result/${item.id}`)}>See answer</a></li>
+                <li><a className={Styles.a} onClick={() => navigate(`/result/${item.id}`)}>See answer</a></li>
                 <li>
-                  <div className={styles.dropdownContainer}>
+                  <div className={Styles.dropdownContainer}>
 
-                    <button className={styles.ellipsisButton} onClick={() => toggleDropdown(item.id)}>
+                    <button className={Styles.ellipsisButton} onClick={() => toggleDropdown(item.id)}>
                       &#x22EE;
                     </button>
 
                     {dropdownOpen === item.id && (
-                      <div className={styles.dropdownMenu}>
+                      <div className={Styles.dropdownMenu}>
                         <button onClick={() => handleDelete(item.id)}>Hapus</button>
                       </div>
                     )}
@@ -157,6 +157,7 @@ const CircleButtons = () => {
             <p>No Buku available</p>
           )}
         </div>
+
       </div>
     </>
   );

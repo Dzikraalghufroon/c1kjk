@@ -57,7 +57,7 @@ const RegistrationForm = () => {
 
             console.error('Sign-in failed:', error);
             setMessage('Sign-in failed. Please try again.');
-            
+
             setSuccess(false);
         }
     };

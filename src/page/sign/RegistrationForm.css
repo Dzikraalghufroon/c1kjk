@@ -10,7 +10,7 @@
 
 .sign {
   height: 100vh;
-  width: 200vh;
+  width: 100%;
   top: 0;
   right: 0;
   position: fixed;
@@ -211,18 +211,11 @@ form .button input:hover {
 .Sign_message{
   color: #000;
 }
-@media (max-width: 768px) {
-  /* .content{
-    width: 50px;
-  } */
-   .container{
-    width: 90%;
-   }
-   .user-details{
-    width: 50%;
-
-   }
-   .button{
-    width: 50%;
-   }
-}
+/* @media (max-width: 768px) {
+  .container{
+    display: none;
+  }
+  .sign{
+    display: none;
+  }
+} */
