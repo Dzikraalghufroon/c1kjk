@@ -4,11 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const LoginForm = () => {
-    const [nickName, setnickName] = useState('');
+    const [nama, setnama] = useState('');
     const [pass, setPass] = useState('');
     const [message, setMessage] = useState('');
     const [success, setSuccess] = useState(false);
     const navigate = useNavigate();
+    const [showPassword, setShowPassword] = useState(false);
 
     useEffect(() => {
         const fetchRedirect = async () => {
@@ -27,15 +28,15 @@ const LoginForm = () => {
     const handleSignIn = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(`${import.meta.env.VITE_SERVER}/api/validation/sign`, {
-                nickName,
+            const response = await axios.post(`${import.meta.env.VITE_SERVER}/api/validation/login`, {
+                nama,
                 pass
             }, { withCredentials: true });
 
             if (response.data.stat === true) {
                 setMessage('Sign-Up successful!');
                 setSuccess(true);
-                navigate('/login');
+                navigate('/');
             } else {
                 setMessage(response.data.message);
                 setSuccess(false);
@@ -49,40 +50,49 @@ const LoginForm = () => {
 
     return (
         <div className='login'>
-        <div className="login-container">
-            <div className="login-title">Login</div>
-            <div className="login-content">
-                <form onSubmit={handleSignIn}>
-                    <div className="login-user-details">
-                        <div className="login-input-box">
-                            <span className="login-details">nickName</span>
-                            <input
-                                type="text"
-                                placeholder="Enter your nickname"
-                                value={nickName}
-                                onChange={(e) => setnickName(e.target.value)}
-                                required
-                            />
+            <div className="login-container">
+                <div className="login-title">Login</div>
+                <div className="login-content">
+                    <form onSubmit={handleSignIn}>
+                        <div className="login-user-details">
+                            <div className="login-input-box">
+                                <span className="login-details">Nick name</span>
+                                <input
+                                    type="text"
+                                    placeholder="Enter your nickname"
+                                    value={nama}
+                                    onChange={(e) => setnama(e.target.value)}
+                                    className='input-text'
+                                    required
+                                />
+                            </div>
+                            <div className="login-input-box">
+                                <span className="login-details">Password</span>
+                                <input
+                                    type={showPassword ? 'text' : 'password'}
+                                    placeholder="Enter your password"
+                                    value={pass}
+                                    onChange={(e) => setPass(e.target.value)}
+                                    className='input-pass'
+                                    required
+                                />
+                                <button
+                                    type="button"
+                                    className="input-button"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                >
+                                    {showPassword ? 'Hide' : 'Show'}
+                                </button>
+                            </div>
                         </div>
-                        <div className="login-input-box">
-                            <span className="login-details">Password</span>
-                            <input
-                                type="password"
-                                placeholder="Enter your password"
-                                value={pass}
-                                onChange={(e) => setPass(e.target.value)}
-                                required
-                            />
-                        </div>
-                    </div>
 
-                    <div className="button">
-                        <input type="submit" value="Register" />
-                    </div>
-                </form>
-                {message && <p>{message}</p>}
+                        <div className="button">
+                            <input type="submit" value="Register" />
+                        </div>
+                    </form>
+                    {message && <p>{message}</p>}
+                </div>
             </div>
-        </div>
         </div>
     );
 };

@@ -73,25 +73,25 @@ const Navbar = () => {
                     <div className="menu">
                         <ul className="menu-links">
                             <li className="nav-link">
-                                <a href="#">
+                                <a onClick={(()=> navigate("/"))}>
                                     <i className="bx bx-home-alt icon"></i>
-                                    <span className="text nav-text">Home</span>
+                                    <span className="text nav-text">Beranda</span>
                                 </a>
                             </li>
                             <li className="nav-link">
-                                <a href="#">
+                                <a onClick={(()=> navigate('/profile'))}>
                                     <i className="bx bx-bar-chart-alt-2 icon"></i>
-                                    <span className="text nav-text">Account</span>
+                                    <span className="text nav-text">Akun</span>
                                 </a>
                             </li>
                             <li className="nav-link">
-                                <a href="#">
+                                <a onClick={(()=> navigate("/setting"))}>
                                     <i className="bx bx-heart icon"></i>
                                     <span className="text nav-text">Setting</span>
                                 </a>
                             </li>
                             <li className="nav-link">
-                                <a href="index.html">
+                                <a onClick={(()=> navigate(-1))}>
                                     <i className="bx bx-bar-chart-alt-2 icon"></i>
                                     <span className="text nav-text">Kembali</span>
                                 </a>

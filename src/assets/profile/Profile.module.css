@@ -1,90 +1,304 @@
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100%;
-    position: absolute;
-    background-color: #e0e0e0;
-    top: 0;
-    right: 0;
-  }
-  
-  .chart {
-    position: relative;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-  }
-  
-  .center {
-    position: absolute;
-    top: 50%;
-    left: 100%;
-    transform: translate(-50%, -50%);
-    width: 150px;
-    height: 150px;
-    background-color: rgb(0, 0, 0);
-    border-radius: 50%;
-    z-index: 10;
-  }
-  
-  .section {
-    position: absolute;
-    width: 50%;
-    height: 50%;
-    border: none;
-    cursor: pointer;
-    transform-origin: 100% 100%;
-    border-radius: 0 100% 100% 0; /* Mengubah ini agar bentuknya lebih sesuai */
-    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-  }
-  
-  .section5 {
-    background-color: #3f51b5;
-    transform: rotate(0deg); /* Rotasi pertama */
-  }
-  
-  .section4 {
-    background-color: #4caf50;
-    transform: rotate(72deg); /* 72 derajat dari yang pertama */
-  }
-  
-  .section3 {
-    background-color: #00bcd4;
-    transform: rotate(144deg);
-  }
-  
-  .section2 {
-    background-color: #ffc107;
-    transform: rotate(216deg);
-  }
-  
-  .section1 {
-    background-color: #ff5722;
-    transform: rotate(288deg);
-  }
-  
-  .section:hover {
-    opacity: 0.8;
-    /* background: linear-gradient(20degg,#3f51b5, #3f51b5); */
-  }
-  
-  .section:active {
-    transform: scale(0.95);
-  }
-  @media screen and (max-width: 768px) {
-    .section{
-        left: 30px;
-        width: 40%;
-        height: 40%;
-    }
-    .center{
-        left: 50%;
-        /* position: relative; */
-        width: 40%;
-        height: 40%;
-        top: 120px;
-    }
+.BuyaHamka{
+  position: absolute;
+  right: 30%;
+  top: 20vh;
+  max-width: auto;
+  height: 30vh;
 }
+.Kata{
+  position: absolute;
+  right: 40%;
+  top: 36vh;
+  z-index: 5;
+}
+.Mhatta{
+  position: absolute;
+  right: 30%;
+  top: 57vh;
+  max-width: auto;
+  height: 18vh;
+}
+.Kata2{
+  position: absolute;
+  right: 40%;
+  top: 66vh;
+  z-index: 5;
+}
+.Date{
+  position: absolute;
+  right: 10px;
+  background-color: azure;
+  width: 25%;
+  border-radius: 5%;
+  top: 20vh;
+  padding-bottom: 20px;
+  height: auto;
+  box-shadow: 20px 40px 8px 0 rgba(65, 12, 163, 0.2), 20px 6px 20px 20px rgba(19, 16, 26, 0.19);
+}
+.DateP{
+  color: black;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  position: relative;
+  top: 10px;
+  /* text-decoration: underline; */
+  font-size: 20px;
+  left: 10px;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30vh;
+  width: 50%;
+  position: absolute;
+  background: linear-gradient(60deg, rgb(17, 45, 207) 20%, rgb(17, 45, 207) 0%, rgb(185, 55, 255) 100%);
+  top: 20vh;
+  opacity: 0.5;
+  left: 20%;
+  border-radius: 5px;
+}
+.container p{
+  font-size: 20px;
+  position: relative;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  top: -20%;
+  left: -30%;
+  text-decoration: none;
+}
+.container h2{
+  position: relative;
+  left: -38%;
+  font-size: 25px;
+}
+.Kalender{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10%;
+
+}
+.Hari,
+.Tanggal {
+  width: 45px; /* Sesuaikan dengan lebar yang Anda inginkan */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* margin: 2px 0px; */
+  margin-right: 10px;
+}
+
+.hari,
+.tanggal {
+  text-align: center;
+  padding: 20px;
+  background-color: #fff;
+  color: black;
+  margin-right: 20px ;
+  border-radius: 5px; /* Tambahkan border-radius untuk sudut melingkar */
+}
+
+.tanggalAktif {
+  padding: 20px;
+  color: #fff;
+  background-color: #5f18e4; 
+  margin-right: 20px ;
+  border-radius: 5px; 
+}
+
+/* Tambahkan hover effect */
+.hari:hover,
+.tanggal:hover {
+  background-color: #eaeaea; /* Ganti warna saat hover */
+}
+.container2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+  width: 50%;
+  position: absolute;
+  /* background-color: azure; */
+  background: linear-gradient(60deg, rgb(84, 96, 168) 20%, rgb(126, 138, 206) 0%, rgb(112, 211, 224) 100%);
+  top: 55vh;
+  opacity: 0.5;
+  left: 20%;
+  border-radius: 10px;
+}
+.container3{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+  width: 10%;
+  position: absolute;
+  background-color: azure;
+  box-shadow: 20px 40px 8px 0 rgba(65, 12, 163, 0.2), 20px 6px 20px 20px rgba(61, 7, 207, 0.19);
+  /* background: linear-gradient(60deg, rgb(17, 45, 207) 20%, rgb(17, 45, 207) 0%, rgb(185, 55, 255) 100%); */
+  top: 85vh;
+  opacity: 0.5;
+  left: 20%;
+  border-radius: 10px;
+}
+@media screen and (max-width: 768px) {
+  .section {
+    width: 60%; /* Sesuaikan ukuran untuk layar kecil */
+    height: 60%;
+    left: 20px; /* Posisi lebih ke dalam */
+  }
+
+  .center {
+    left: 50%;
+    width: 40%;
+    height: 40%;
+    top: 120px;
+  }
+}
+/* CSS */
+.button_49,
+.button_49:after {
+  width: 150px;
+  height: 76px;
+  line-height: 78px;
+  font-size: 20px;
+  font-family: 'Bebas Neue', sans-serif;
+  background: linear-gradient(45deg, transparent 5%, #FF013C 5%);
+  border: 0;
+  color: #fff;
+  letter-spacing: 3px;
+  box-shadow: 6px 0px 0px #00E6F6;
+  outline: transparent;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button_49:after {
+  --slice-0: inset(50% 50% 50% 50%);
+  --slice-1: inset(80% -6px 0 0);
+  --slice-2: inset(50% -6px 30% 0);
+  --slice-3: inset(10% -6px 85% 0);
+  --slice-4: inset(40% -6px 43% 0);
+  --slice-5: inset(80% -6px 5% 0);
   
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 3%, #00E6F6 3%, #00E6F6 5%, #FF013C 5%);
+  text-shadow: -3px -3px 0px #F8F005, 3px 3px 0px #00E6F6;
+  clip-path: var(--slice-0);
+}
+
+.button_49:hover:after {
+  animation: 1s glitch;
+  animation-timing-function: steps(2, end);
+}
+
+@keyframes glitch {
+  0% {
+    clip-path: var(--slice-1);
+    transform: translate(-20px, -10px);
+  }
+  10% {
+    clip-path: var(--slice-3);
+    transform: translate(10px, 10px);
+  }
+  20% {
+    clip-path: var(--slice-1);
+    transform: translate(-10px, 10px);
+  }
+  30% {
+    clip-path: var(--slice-3);
+    transform: translate(0px, 5px);
+  }
+  40% {
+    clip-path: var(--slice-2);
+    transform: translate(-5px, 0px);
+  }
+  50% {
+    clip-path: var(--slice-3);
+    transform: translate(5px, 0px);
+  }
+  60% {
+    clip-path: var(--slice-4);
+    transform: translate(5px, 10px);
+  }
+  70% {
+    clip-path: var(--slice-2);
+    transform: translate(-10px, 10px);
+  }
+  80% {
+    clip-path: var(--slice-5);
+    transform: translate(20px, -10px);
+  }
+  90% {
+    clip-path: var(--slice-1);
+    transform: translate(-10px, 0px);
+  }
+  100% {
+    clip-path: var(--slice-1);
+    transform: translate(0);
+  }
+}
+
+@media (min-width: 768px) {
+  .button_49,
+  .button_49:after {
+    width: 200px;
+    height: 86px;
+    line-height: 88px;
+  }
+}
+
+.h3{
+  color: black;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.koleksi{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  width: 50%;
+  position: absolute;
+  background-color: azure;
+  /* background: linear-gradient(60deg, rgb(84, 96, 168) 20%, rgb(126, 138, 206) 0%, rgb(112, 211, 224) 100%); */
+  top: 70vh;
+  margin-top: 40px;
+  opacity: 0.5;
+  color: black;
+  left: 20%;
+  border-radius: 10px;
+
+}
+.container3{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+  width: 10%;
+  position: absolute;
+  background-color: azure;
+  box-shadow: 20px 40px 8px 0 rgba(65, 12, 163, 0.2), 20px 6px 20px 20px rgba(61, 7, 207, 0.19);
+  /* background: linear-gradient(60deg, rgb(17, 45, 207) 20%, rgb(17, 45, 207) 0%, rgb(185, 55, 255) 100%); */
+  top: 90vh;
+  opacity: 1;
+  left: 20%;
+  border-radius: 10px;
+  /* background-image: url("./plus-icon.png"); */
+}
+.container3 img{
+  max-width: 7vh;
+}
+.List{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10%;
+  position: absolute;
+  top: 112vh;
+}

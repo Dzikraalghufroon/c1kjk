@@ -204,5 +204,25 @@ form .button input:hover {
 @media(max-width: 459px) {
   .container .content .category {
     flex-direction: column;
+    width: 80%;
   }
+  
+}
+.Sign_message{
+  color: #000;
+}
+@media (max-width: 768px) {
+  /* .content{
+    width: 50px;
+  } */
+   .container{
+    width: 90%;
+   }
+   .user-details{
+    width: 50%;
+
+   }
+   .button{
+    width: 50%;
+   }
 }

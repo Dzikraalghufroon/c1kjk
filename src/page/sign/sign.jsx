@@ -44,15 +44,20 @@ const RegistrationForm = () => {
 
             if (response.data.stat === true) {
                 setMessage('Sign-Up successful!');
+                console.log(response)
                 setSuccess(true);
                 navigate('/login');
             } else {
-                setMessage(response.data.message);
+                setMessage(response.data.text);
                 setSuccess(false);
+                console.log(response.data.text)
             }
         } catch (error) {
+            console.log(`${import.meta.env.VITE_SERVER}/api/validation/sign`);
+
             console.error('Sign-in failed:', error);
             setMessage('Sign-in failed. Please try again.');
+            
             setSuccess(false);
         }
     };
@@ -87,7 +92,7 @@ const RegistrationForm = () => {
                             <div className="input-box">
                                 <span className="details">Password</span>
                                 <input
-                                    type="password"
+                                    type="text"
                                     placeholder="Enter your password"
                                     value={pass}
                                     onChange={(e) => setPass(e.target.value)}
@@ -113,20 +118,32 @@ const RegistrationForm = () => {
                                 >
                                     <option value="" disabled>Select your class</option>
                                     <option value="10.A">10.A</option>
+                                    <option value="10.A">10.B</option>
+                                    <option value="10.A">10.C</option>
+                                    <option value="10.A">10.D</option>
+                                    <option value="11.B">11.A</option>
                                     <option value="11.B">11.B</option>
+                                    <option value="11.B">11.C</option>
+                                    <option value="11.B">11.D</option>
+                                    <option value="11.B">11.E</option>
                                     <option value="12.A">12.A</option>
                                     <option value="12.B">12.B</option>
+                                    <option value="12.B">12.C</option>
+                                    <option value="12.B">12.D</option>
+                                    <option value="12.B">12.E</option>
                                 </select>
                             </div>
                             <div className="input-box">
                                 <span className="details">Asrama</span>
-                                <input
-                                    type="text"
-                                    placeholder="Enter your dormitory"
+                                <select
                                     value={asrama}
                                     onChange={(e) => setAsrama(e.target.value)}
                                     required
-                                />
+                                >
+                                    <option value="" disabled>Select your Dormitory</option>
+                                    <option value="putra">putera</option>
+                                    <option value="putri">puteri</option>
+                                </select>
                             </div>
                             <div className="input-box">
                                 <span className="details">Gender</span>
@@ -138,7 +155,7 @@ const RegistrationForm = () => {
                                     <option value="" disabled>Select your gender</option>
                                     <option value="laki-laki">Male</option>
                                     <option value="perempuan">Female</option>
-                                    <option value="Prefer not to say">Prefer not to say</option>
+                                    {/* <option value="Prefer not to say">Prefer not to say</option> */}
                                 </select>
                             </div>
                         </div>
@@ -147,8 +164,8 @@ const RegistrationForm = () => {
                             <input type="submit" value="Register" />
                         </div>
                     </form>
-                    {message && <p>{message}</p>}
                 </div>
+                <p className='Sign_message'>{message && message}</p>
             </div>
         </div>
     );

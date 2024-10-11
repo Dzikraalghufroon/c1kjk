@@ -36,14 +36,25 @@ html, body {
     margin-bottom: 20px;
   }
   
-  .login-content input[type="text"], 
-  .login-content input[type="password"] {
+  .input-text{
     width: 100%;
     padding: 10px;
     margin: 10px 0;
     border: none;
     border-radius: 5px;
     outline: none;
+  } 
+  .input-pass {
+    width: 70%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+  }
+  .input-button{
+    color: black;
+    background-color: transparent;
   }
   
   .login-content input[type="submit"] {
