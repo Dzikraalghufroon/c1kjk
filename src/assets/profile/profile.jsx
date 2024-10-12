@@ -118,11 +118,11 @@ const CircleButtons = () => {
       <div className={Styles.koleksi}>
         <h2>Tambah Koleksi buku</h2>
       </div>
-      <div className={Styles.container3}>
-        <a onClick={(() => navigate("/upload"))}>
+      <a onClick={(() => navigate("/profile/upload"))}>
+        <div className={Styles.container3}>
           <img src={Plus} alt="" />
-        </a>
-      </div>
+        </div>
+      </a>
       <div className={Styles.List}>
         <div>
           {loading ? (

@@ -1,0 +1,130 @@
+.File_upload {
+    position: relative;
+    width: 300px; /* Sesuaikan dengan kebutuhan Anda */
+    margin: 20px auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.File_upload h4{
+    color: rgb(128, 124, 124);
+    font-weight: 400;
+    position: absolute;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    top: 5px;
+    /* font-size: 30px; */
+    left: 5px;
+    display:block;
+}
+
+.File_upload_label {
+    display: inline-block;
+    padding: 50px 100px;
+    background-color: #ffffff; /* Warna latar belakang tombol */
+    color: white; /* Warna teks */
+    border-radius: 5px; /* Sudut yang membulat */
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.File_upload_label:hover {
+    background-color: #606860; /* Warna latar belakang saat hover */
+}
+.File_upload_label img{
+    max-width: 20vh;
+}
+.File_upload_input {
+    display: none; 
+}
+.file_info{
+    width: 30%;
+    position: absolute;
+    right: 10px;
+    top: 40%;
+    background-color: aliceblue;
+    padding: 40px 50px;
+    color: black;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+/* .judul_label{
+    position: relative;
+    left: 10px;
+}
+.judul_input{
+    border-radius: 0px;
+    background-color: #ffffff;
+    border: 0.5px solid #0b196b;
+}
+.genre_label{
+    position: relative;
+    left: 10px;
+}
+.genre_input{
+    border-radius: 0px;
+    background-color: #ffffff;
+    border: 0.5px solid #0b196b;
+}
+.description_label{
+    position: relative;
+    left: 10px;
+}
+.description_input{
+    border-radius: 0px;
+    background-color: #ffffff;
+    border: 0.5px solid #0b196b;
+} */
+.judul_label,
+.genre_label {
+    position: relative;
+    left: 10px;
+    font-weight: bold; 
+    color: #333; 
+    margin-bottom: 5px; 
+}
+.description_label{
+    position: relative;
+    left: 10px;
+    font-weight: bold; 
+    /* margin-top: 50px; */
+    top: 50px;
+    color: #333; 
+    margin-bottom: 5px; 
+}
+
+.judul_input,
+.genre_input {
+    border-radius: 4px; 
+    background-color: #ffffff; 
+    border: 1px solid #0b196b; 
+    padding: 10px; 
+    width: 100%; 
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; 
+    color: black;
+}
+.description_input{
+    border-radius: 4px; 
+    background-color: #ffffff; 
+    border: 1px solid #0b196b; 
+    /* padding: 100px;  */
+    width: 100%; 
+    height: 100px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; 
+    color: black;
+
+}
+
+/* Efek saat input fokus */
+.judul_input:focus,
+.genre_input:focus,
+.description_input:focus {
+    border-color: #0066cc; /* Warna border saat fokus */
+    box-shadow: 0 0 5px rgba(0, 102, 204, 0.5); /* Efek bayangan saat fokus */
+    outline: none; /* Menghapus outline default */
+}
+
+/* Efek hover pada input */
+.judul_input:hover,
+.genre_input:hover,
+.description_input:hover {
+    border-color: #0066cc; /* Warna border saat hover */
+}

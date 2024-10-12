@@ -1,0 +1,48 @@
+.editorContainer {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    color: black;
+  }
+  
+  .toolbar {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  /* Tombol toolbar */
+  .toolbar button {
+    padding: 5px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background-color: #423939;
+  }
+  
+  .toolbar button:hover {
+    background-color: #bd0000;
+  }
+  
+  /* Tombol aktif */
+  .activeButton {
+    background-color: #2000d8;
+    color: white;
+  }
+  
+  .editor {
+    min-height: 200px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: white;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  .editor:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  

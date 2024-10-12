@@ -9,9 +9,9 @@ import LoginForm from './page/sign/login';
 import Navbar from './assets/sidebar/navbar';
 import Profile from './assets/profile/profile';
 import Account from './page/profile/account';
+import Upload from './page/Upload/upload';
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
@@ -21,6 +21,7 @@ function App() {
           <Route path='/sign' element={<RegistrationForm />} />
           <Route path='/login' element={<LoginForm />} />
           <Route path='/profile' element={<Account />} />
+          <Route path='/profile/upload' element={<Upload />} />
         </Routes>
       </Router>
     </>
