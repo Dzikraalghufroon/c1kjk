@@ -128,3 +128,16 @@
 .description_input:hover {
     border-color: #0066cc; /* Warna border saat hover */
 }
+
+@media (max-width: 768px) {
+    .file_info{
+        position: absolute;
+        width: 80%;
+        top: 80vh;
+        /* margin-bottom: 20vh; */
+        padding-bottom: 20%;
+    }
+    .description_label{
+        top:31px
+    }
+  }

@@ -103,7 +103,7 @@ const File_upload = () => {
                     Quote
                 </button> */}
             </div>
-            {previewImageUrl && <div className={styles.previewImageContainer}><img src={previewImageUrl} alt="Preview" /></div>}
+            {/* {previewImageUrl && <div className={styles.previewImageContainer}><img src={previewImageUrl} alt="Preview" /></div>} */}
         </div>
     );
 
@@ -121,6 +121,7 @@ const File_upload = () => {
         <>
             <div className={Styles.container}>
                 <div className={Styles.File_upload}>
+                {previewImageUrl && <div className={styles.previewImageContainer}><img src={previewImageUrl} alt="Preview" /></div>}
                     <label htmlFor="file-upload" className={Styles.File_upload_label}>
                         <span><img src={ImageUpload} alt="Upload" /></span>
                     </label>
@@ -142,8 +143,8 @@ const File_upload = () => {
                     </label>
                     {renderEditor(textInputRef, setSoal, "Ketik teks di sini...")}
 
-                <br /><br /><br /><br /><br /><br /><br /><br />
-                    <button onClick={handleSave}>Simpan</button> 
+                    <br /><br /><br /><br /><br /><br /><br /><br />
+                    <button onClick={handleSave}>Simpan</button>
 
                 </div>
             </div>

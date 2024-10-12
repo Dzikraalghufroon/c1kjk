@@ -45,12 +45,14 @@ const Navbar = () => {
                         </a>
                     </li>
                     <li className='search-input'>
-                        <form action="">
-                            <input type="text" placeholder='     search '/>
-                            <button><img src={search} alt="" /></button>
-                        </form>
+                        <div>
+                            <form action="">
+                                <input type="text" placeholder='     search ' />
+                                <button><img src={search} alt="" /></button>
+                            </form>
+                        </div>
                     </li>
-                    
+
                 </ul>
             </div>
 
@@ -63,8 +65,8 @@ const Navbar = () => {
                             <span className="profession">World</span>
                         </div>
                     </div>
-                    <i 
-                        className="bx bx-chevron-right toggle" 
+                    <i
+                        className="bx bx-chevron-right toggle"
                         onClick={() => setIsSidebarClosed(!isSidebarClosed)}
                     >C</i>
                 </header>
@@ -73,25 +75,25 @@ const Navbar = () => {
                     <div className="menu">
                         <ul className="menu-links">
                             <li className="nav-link">
-                                <a onClick={(()=> navigate("/"))}>
+                                <a onClick={(() => navigate("/"))}>
                                     <i className="bx bx-home-alt icon"></i>
                                     <span className="text nav-text">Beranda</span>
                                 </a>
                             </li>
                             <li className="nav-link">
-                                <a onClick={(()=> navigate('/profile'))}>
+                                <a onClick={(() => navigate('/profile'))}>
                                     <i className="bx bx-bar-chart-alt-2 icon"></i>
                                     <span className="text nav-text">Akun</span>
                                 </a>
                             </li>
                             <li className="nav-link">
-                                <a onClick={(()=> navigate("/setting"))}>
+                                <a onClick={(() => navigate("/setting"))}>
                                     <i className="bx bx-heart icon"></i>
                                     <span className="text nav-text">Setting</span>
                                 </a>
                             </li>
                             <li className="nav-link">
-                                <a onClick={(()=> navigate(-1))}>
+                                <a onClick={(() => navigate(-1))}>
                                     <i className="bx bx-bar-chart-alt-2 icon"></i>
                                     <span className="text nav-text">Kembali</span>
                                 </a>
