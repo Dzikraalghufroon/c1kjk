@@ -5,9 +5,11 @@ import ImageUpload from "./image/upload-image-icon.png";
 import ikon from './assets/bold.png';
 import ikon1 from './assets/underline-icon.png';
 import ikon2 from './assets/italic.png';
+import axios from 'axios';
 
 const File_upload = () => {
     const [previewImageUrl, setPreviewImageUrl] = useState('');
+    const [imageFile, setImageFile] = useState(null);  // Simpan file gambar
     const textInputRef = useRef(null);
     const [soal, setSoal] = useState('');
     const commandRefs = useRef({
@@ -49,6 +51,7 @@ const File_upload = () => {
     const previewImage = event => {
         const file = event.target.files[0];
         if (file) {
+            setImageFile(file);  // Simpan file gambar
             const reader = new FileReader();
             reader.onload = e => {
                 setPreviewImageUrl(e.target.result);
@@ -99,29 +102,44 @@ const File_upload = () => {
                 <button type="button" ref={el => commandRefs.current.insertOrderedList = el} onClick={() => toggleFormat('insertOrderedList')}>
                     Numbered List
                 </button>
-                {/* <button type="button" ref={el => commandRefs.current.formatBlock = el} onClick={() => toggleFormat('formatBlock', 'blockquote')}>
-                    Quote
-                </button> */}
             </div>
-            {/* {previewImageUrl && <div className={styles.previewImageContainer}><img src={previewImageUrl} alt="Preview" /></div>} */}
         </div>
     );
 
-    const handleSave = () => {
-        const data = {
-            title: document.getElementById('judul-input').value,
-            genre: document.getElementById('genre-input').value,
-            description: soal,
-            image: previewImageUrl
-        };
-        console.log(data); // Ganti dengan logika penyimpanan yang sesuai
+    const handleSave = async () => {
+        try {
+            // Buat nama gambar unik dengan timestamp
+            const uniqueImageName = `${Date.now()}-${imageFile.name}`;
+
+            // 1. Kirim file gambar ke endpoint pertama
+            const formData = new FormData();
+            formData.append('image', imageFile, uniqueImageName);  // Tambahkan nama gambar unik
+
+            await axios.post(`${import.meta.env.VITE_SERVER}/api/upload`, formData, {
+                headers: { 'Content-Type': 'multipart/form-data' }
+            });
+
+            // 2. Kirim data lainnya ke endpoint kedua
+            const data = {
+                title: document.getElementById('judul-input').value,
+                genre: document.getElementById('genre-input').value,
+                description: soal,
+                imageName: uniqueImageName // Kirim nama gambar unik
+            };
+
+            await axios.post(`${import.meta.env.VITE_SERVER}/read_kelas`, data);
+
+            console.log('Data berhasil disimpan');
+        } catch (error) {
+            console.error('Error saat mengirim data:', error);
+        }
     };
 
     return (
         <>
             <div className={Styles.container}>
                 <div className={Styles.File_upload}>
-                {previewImageUrl && <div className={styles.previewImageContainer}><img src={previewImageUrl} alt="Preview" /></div>}
+                    {previewImageUrl && <div className={styles.previewImageContainer}><img src={previewImageUrl} alt="Preview" /></div>}
                     <label htmlFor="file-upload" className={Styles.File_upload_label}>
                         <span><img src={ImageUpload} alt="Upload" /></span>
                     </label>
@@ -145,11 +163,10 @@ const File_upload = () => {
 
                     <br /><br /><br /><br /><br /><br /><br /><br />
                     <button onClick={handleSave}>Simpan</button>
-
                 </div>
             </div>
         </>
-    )
-}
+    );
+};
 
 export default File_upload;
