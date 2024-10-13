@@ -1,9 +1,11 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Styles from "./account.module.css"
 import CircleButtons from "../profile/profile";
 
 const Account = () => {
+    
     return (
         <>
             <div className={Styles.polaroid}>

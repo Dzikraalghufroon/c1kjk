@@ -87,8 +87,8 @@ const CircleButtons = () => {
         karena dengan buku aku bebas
       </h6>
       <div className={Styles.container}>
-        <p>Halo&nbsp;&nbsp;</p>
-        <h2>{name}</h2>
+        <p className={Styles.halo}>Halo&nbsp;&nbsp;</p>
+        <h2 className={Styles.userName}>{name}</h2>
       </div>
       <div className={Styles.Date}>
         <p className={Styles.DateP}>{arrayMonth[monthIndex]}&nbsp;{Year}</p>

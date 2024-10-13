@@ -337,5 +337,16 @@
     width: 30%;
     height: 200px;
   }
+  .halo{
+    /* position: relative;
+    left:2000px; */
+    margin-left: 20vh;
+  }
+  .userName{
+    margin-left: -50px;
+  }
 
+}
+.userName{
+  color: white;
 }
