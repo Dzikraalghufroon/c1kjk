@@ -6,12 +6,15 @@ import ikon from './assets/bold.png';
 import ikon1 from './assets/underline-icon.png';
 import ikon2 from './assets/italic.png';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 const File_upload = () => {
     const [previewImageUrl, setPreviewImageUrl] = useState('');
-    const [imageFile, setImageFile] = useState(null);  // Simpan file gambar
+    const [imageFile, setImageFile] = useState(null);  // Store image file
+    const [title, setTitle] = useState('');  // Set default to empty string
+    const [genre, setGenre] = useState('');  // Set default to empty string
+    const [soal, setSoal] = useState('');  // Set default to empty string for description
     const textInputRef = useRef(null);
-    const [soal, setSoal] = useState('');
     const commandRefs = useRef({
         bold: null,
         italic: null,
@@ -20,6 +23,7 @@ const File_upload = () => {
         insertOrderedList: null,
         formatBlock: null
     });
+    const navigate = useNavigate();
 
     const toggleFormat = (command, value = null) => {
         document.execCommand(command, false, value);
@@ -51,7 +55,7 @@ const File_upload = () => {
     const previewImage = event => {
         const file = event.target.files[0];
         if (file) {
-            setImageFile(file);  // Simpan file gambar
+            setImageFile(file);  // Store image file
             const reader = new FileReader();
             reader.onload = e => {
                 setPreviewImageUrl(e.target.result);
@@ -83,8 +87,9 @@ const File_upload = () => {
                 className={styles.content}
                 ref={ref}
                 contentEditable
-                onInput={(e) => setFunction(e.target.innerHTML)}
+                onInput={(e) => setFunction(e.target.innerHTML)} // Set soal with innerHTML
                 placeholder={placeholder}
+                suppressContentEditableWarning={true} // Avoid warnings about contentEditable
             ></div>
             <div className={styles.controls}>
                 <button type="button" ref={el => commandRefs.current.bold = el} onClick={() => toggleFormat('bold')}>
@@ -108,29 +113,29 @@ const File_upload = () => {
 
     const handleSave = async () => {
         try {
-            // Buat nama gambar unik dengan timestamp
+            // Create a unique image name with timestamp
             const uniqueImageName = `${Date.now()}-${imageFile.name}`;
 
-            // 1. Kirim file gambar ke endpoint pertama
+            // 1. Send the image file to the first endpoint
             const formData = new FormData();
-            formData.append('image', imageFile, uniqueImageName);  // Tambahkan nama gambar unik
+            formData.append('image', imageFile, uniqueImageName);  // Add unique image name
 
             await axios.post(`${import.meta.env.VITE_SERVER}/api/upload`, formData, {
                 headers: { 'Content-Type': 'multipart/form-data' }
             });
 
-            // 2. Kirim data lainnya ke endpoint kedua
+            // 2. Send other data to the second endpoint
             const data = {
-                title: document.getElementById('judul-input').value,
-                genre: document.getElementById('genre-input').value,
-                description: soal,
-                imageName: uniqueImageName // Kirim nama gambar unik
+                title: title,  // Use title state
+                genre: genre,  // Use genre state
+                description: soal,  // Use soal state
+                imageName: uniqueImageName // Send unique image name
             };
 
-            await axios.post(`${import.meta.env.VITE_SERVER}/read_kelas`, data);
-
-            console.log('Data berhasil disimpan');
+            await axios.post(`${import.meta.env.VITE_SERVER}/api/dashboard/post/book`, data, { withCredentials: true });
+            navigate("/profile")
         } catch (error) {
+            console.log(`${import.meta.env.VITE_SERVER}/api/dashboard/post/book`);
             console.error('Error saat mengirim data:', error);
         }
     };
@@ -143,18 +148,34 @@ const File_upload = () => {
                     <label htmlFor="file-upload" className={Styles.File_upload_label}>
                         <span><img src={ImageUpload} alt="Upload" /></span>
                     </label>
-                    <input type="file" id="file-upload" className={Styles.File_upload_input} onChange={previewImage} />
+                    <input
+                        type="file"
+                        id="file-upload"
+                        className={Styles.File_upload_input}
+                        onChange={previewImage} />
                 </div>
                 <div className={Styles.file_info}>
                     <label htmlFor="judul-input" className={Styles.judul_label}>
                         <span>Judul :</span>
                     </label>
-                    <input type="text" id="judul-input" className={Styles.judul_input} />
+                    <input
+                        type="text"
+                        id="judul-input"
+                        className={Styles.judul_input}
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                    />
 
                     <label htmlFor="genre-input" className={Styles.genre_label}>
                         <span>Genre :</span>
                     </label>
-                    <input type="text" id="genre-input" className={Styles.genre_input} />
+                    <input
+                        type="text"
+                        id="genre-input"
+                        className={Styles.genre_input}
+                        value={genre}
+                        onChange={(e) => setGenre(e.target.value)}
+                    />
 
                     <label htmlFor="description-input" className={Styles.description_label}>
                         <span>Deskripsi :</span>

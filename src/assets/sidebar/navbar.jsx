@@ -5,12 +5,14 @@ import home from './home.png'
 import profile from './profile.png'
 import setting from './setting.png'
 import search from './search.png'
+import axios from 'axios';
+// import SearchFunction from '../search/search';
 
 const Navbar = () => {
     const navigate = useNavigate();
     const [isSidebarClosed, setIsSidebarClosed] = useState(false);
     const [isDarkMode, setIsDarkMode] = useState(false);
-
+    const [input, setinput] = useState(null);
     useEffect(() => {
         const toggleSidebar = () => {
             setIsSidebarClosed(!isSidebarClosed);
@@ -25,7 +27,9 @@ const Navbar = () => {
             // Nothing to cleanup for now
         };
     }, [isSidebarClosed, isDarkMode]);
-
+    const SearchFunction = async(e) => {
+        navigate(`/result?search=${input}`)
+    }
     return (
         <>
             <div className="navbar-animmenu">
@@ -46,9 +50,14 @@ const Navbar = () => {
                     </li>
                     <li className='search-input'>
                         <div>
-                            <form action="">
-                                <input type="text" placeholder='     search ' />
-                                <button><img src={search} alt="" /></button>
+                            <form onSubmit={SearchFunction}>
+                                <input 
+                                type="text" 
+                                placeholder='     search ' 
+                                value={input}
+                                onChange={(e) => setinput(e.target.value)}
+                                />
+                                <button type="submit"><img src={search} alt="" /></button>
                             </form>
                         </div>
                     </li>
