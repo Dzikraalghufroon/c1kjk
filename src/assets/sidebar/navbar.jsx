@@ -6,7 +6,7 @@ import profile from './profile.png'
 import setting from './setting.png'
 import search from './search.png'
 import axios from 'axios';
-// import SearchFunction from '../search/search';
+// import SearchNavigateFunction from '../search/search';
 
 const Navbar = () => {
     const navigate = useNavigate();
@@ -27,9 +27,17 @@ const Navbar = () => {
             // Nothing to cleanup for now
         };
     }, [isSidebarClosed, isDarkMode]);
-    const SearchFunction = async(e) => {
-        navigate(`/result?search=${input}`)
-    }
+    // const SearchNavigateFunction = async(e) => {
+    //     e.preventDefault();
+    //     // navigate("/")
+    //     navigate(`/result?search=${input}`)
+    // }
+    const SearchNavigateFunction = async (e) => {
+        e.preventDefault();  
+        if (input.trim() !== "") {
+            navigate(`/result?search=${input}`);
+        }
+    };
     return (
         <>
             <div className="navbar-animmenu">
@@ -50,7 +58,7 @@ const Navbar = () => {
                     </li>
                     <li className='search-input'>
                         <div>
-                            <form onSubmit={SearchFunction}>
+                            <form onSubmit={SearchNavigateFunction} method='get'>
                                 <input 
                                 type="text" 
                                 placeholder='     search ' 

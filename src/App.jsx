@@ -9,6 +9,7 @@ import LoginForm from './page/sign/login';
 import Navbar from './assets/sidebar/navbar';
 import Profile from './assets/profile/profile';
 import Account from './page/profile/account';
+import Search from './page/search/search';
 import Upload from './page/Upload/upload';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path='/login' element={<LoginForm />} />
           <Route path='/profile' element={<Account />} />
           <Route path='/profile/upload' element={<Upload />} />
+          <Route path='/result' element={<Search />} />
         </Routes>
       </Router>
     </>
