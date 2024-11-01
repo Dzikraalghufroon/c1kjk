@@ -305,6 +305,7 @@
   margin-left: 10%;
   position: absolute;
   top: 112vh;
+  left: 15%;
 }
 @media (max-width: 768px) {
   .Mhatta,
@@ -354,4 +355,77 @@
   position: absolute;
   top: 10vh;
   right: 5vh;
+}
+.questionList {
+  display: flex;               /* Menggunakan flexbox untuk menyusun item secara horizontal */
+  flex-wrap: wrap;            /* Memungkinkan item untuk berpindah ke baris baru jika diperlukan */
+  justify-content: flex-start; /* Menyusun item mulai dari kiri */
+  gap: 15px;                  /* Jarak antar item */
+  /* position: relative;
+  left: -50%; */
+}
+
+.questionItem {
+  display: flex;               /* Menggunakan flexbox di dalam item */
+  flex-direction: column;      /* Mengatur item agar ditumpuk secara vertikal */
+  justify-content: center;      /* Menyelaraskan konten di tengah secara vertikal */
+  align-items: center;         /* Menyelaraskan konten di tengah secara horizontal */
+  width: 300px;                /* Lebar tetap untuk setiap kotak */
+  height: 380px;               /* Tinggi tetap untuk setiap kotak */
+  padding: 10px;              /* Ruang di dalam kotak */
+  border: 1px solid #ddd;      /* Border untuk kotak */
+  border-radius: 8px;          /* Sudut membulat untuk kotak */
+  background-color: #fff;     /* Warna latar belakang kotak */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Efek bayangan untuk kotak */
+  transition: transform 0.2s; /* Transisi untuk efek hover */
+
+}
+
+.questionItem:hover {
+  transform: scale(1.05);     /* Efek zoom saat hover */
+}
+
+.image {
+  max-width: 55%;
+  max-height: 65%;
+  object-fit: cover;          /* Memastikan gambar tidak terdistorsi */
+  border-radius: 5px;         /* Sudut membulat untuk gambar */
+}
+
+.questionItem h4 {
+  margin: 5px 0;              /* Jarak antar elemen h4 */
+  text-align: center;         /* Menyelaraskan teks di tengah */
+  color: black;
+}
+
+.a {
+  color: blue;                /* Warna untuk link */
+  text-decoration: none;      /* Menghapus garis bawah dari link */
+  transition: color 0.3s;     /* Transisi untuk efek hover pada link */
+}
+
+.a:hover {
+  color: darkblue;            /* Warna saat hover */
+}
+
+/* Tambahan untuk dropdown dan button */
+.dropdownContainer {
+  position: relative;         /* Agar dropdown bisa terletak di atas elemen lainnya */
+}
+
+.ellipsisButton {
+  background: transparent;   /* Background transparan untuk tombol */
+  border: none;              /* Menghapus border default */
+  cursor: pointer;           /* Mengubah kursor menjadi pointer saat hover */
+}
+
+.dropdownMenu {
+  position: absolute;         /* Posisi absolut untuk dropdown */
+  top: 100%;                 /* Mengatur dropdown di bawah tombol */
+  left: 0;                   /* Mengatur dropdown sejajar dengan tombol */
+  background: white;         /* Background putih untuk dropdown */
+  border: 1px solid #ddd;    /* Border untuk dropdown */
+  border-radius: 5px;        /* Sudut membulat untuk dropdown */
+  z-index: 1;                /* Agar dropdown terlihat di atas elemen lainnya */
+  min-width: 100px;          /* Lebar minimum dropdown */
 }

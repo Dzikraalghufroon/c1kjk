@@ -18,7 +18,7 @@ const CircleButtons = () => {
     "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"
   ];
   const date = current.getDate();
-  const monthIndex = current.getMonth() + 1;
+  const monthIndex = current.getMonth();
   const arrayMonth = [
     "Januari", "Februari", "Maret", "April", "Mei", "Juni",
     "Juli", "Agustus", "September", "Oktober", "November", "Desember"
@@ -45,23 +45,25 @@ const CircleButtons = () => {
     };
     fetchData();
   }, []);
-  useEffect(() => {
-    const fetchBuku = async () => {
-      try {
-        const response = await axios.get(`${import.meta.env.VITE_SERVER}/read_kelas`)//('http://localhost:2000/read-kelas');
-        setBuku(response.data);
-      } catch (error) {
-        console.error('Error Cok:', error);
-      }
-    };
-    fetchBuku();
-  }, []);
+  // useEffect(() => {
+  //   const fetchBuku = async () => {
+  //     try {
+  //       const response = await axios.get(`${import.meta.env.VITE_SERVER}/api/dashboard/user/book`, { withCredentials: true })//('http://localhost:2000/read-kelas');
+  //       setBuku(response.data);
+  //     } catch (error) {
+  //       console.error('Error Cok:', error);
+  //     }
+  //   };
+  //   fetchBuku();
+  // }, []);
   useEffect(() => {
     const fetchredata = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_SERVER}/api/dashboard/question`, { withCredentials: true });
+        const response = await axios.get(`${import.meta.env.VITE_SERVER}/api/dashboard/user/book`, { withCredentials: true });
+        console.log(response.data.data)
         if (response.data) {
-          setBuku(response.data);
+          setBuku(response.data.data);
+
         }
       } catch (error) {
         console.error('Error Cok:', error);
@@ -75,7 +77,7 @@ const CircleButtons = () => {
 
   return (
     <>
-    {/* <div class={gaya.wrap}>
+      {/* <div class={gaya.wrap}>
       <button class={gaya.button}>Logout</button>
     </div><br /><br /><br /> */}
       <img src={Buyahamka} alt="Buya Hamka" className={Styles.BuyaHamka} />
@@ -133,37 +135,46 @@ const CircleButtons = () => {
           {loading ? (
             <p>Loading...</p>
           ) : Buku && Buku.length > 0 ? (
-            Buku.map((item) => (
-              <ul key={item.id} className={Styles.questionItem}>
+            <ul className={Styles.questionList}>
+              {Buku.map((item) => (
 
-                <li>{item.name}</li>
 
-                <li>{item.reg_date}</li>
-
-                <li>{item.soal}</li>
-                <li><a className={Styles.a} onClick={() => navigate(`/result/${item.id}`)}>See answer</a></li>
-                <li>
-                  <div className={Styles.dropdownContainer}>
-
-                    <button className={Styles.ellipsisButton} onClick={() => toggleDropdown(item.id)}>
-                      &#x22EE;
-                    </button>
-
-                    {dropdownOpen === item.id && (
-                      <div className={Styles.dropdownMenu}>
-                        <button onClick={() => handleDelete(item.id)}>Hapus</button>
+                <li key={item.id} className={Styles.questionItem}>
+                  <img
+                    src={`${import.meta.env.VITE_SERVER}/get-img/${item.route_image}`}
+                    alt={item.route_image}
+                    className={Styles.image}
+                  />
+                  <h4>{item.title}</h4>
+                  <h4>{item.genre}</h4><br />
+                  <li><div class={gaya.wrap}>
+                    <button class={gaya.button} onClick={() => navigate(`/result/${item.id}`)}>open</button>
+                  </div></li><br />
+                  {/* <li><a className={Styles.a} onClick={() => navigate(`/result/${item.id}`)}>See answer</a></li> */}
+                  {/* <li>
+                      <div className={Styles.dropdownContainer}>
+                        <button className={Styles.ellipsisButton} onClick={() => toggleDropdown(item.id)}>
+                          &#x22EE;
+                        </button>
+                        {dropdownOpen === item.id && (
+                          <div className={Styles.dropdownMenu}>
+                            <button onClick={() => handleDelete(item.id)}>Hapus</button>
+                          </div>
+                        )}
                       </div>
-                    )}
-                  </div>
+                    </li> 
+                    */}
                 </li>
-              </ul>
-            ))
+
+
+              ))}
+            </ul>
           ) : (
             <p>No Buku available</p>
           )}
-        </div>
+        </div >
 
-      </div>
+      </div >
     </>
   );
 };
