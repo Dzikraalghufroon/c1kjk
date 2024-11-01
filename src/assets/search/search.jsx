@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Styles from "./search.module.css"
+import gaya from "./account.module.css"
 
 const SearchFunction = () => {
     const navigate = useNavigate();
@@ -51,20 +52,25 @@ const SearchFunction = () => {
 
             {searchFound ? (
                 <div className={Styles.container}>
-                        {/* <br /><br /><br /><br /><br /><br />
+                    {/* <br /><br /><br /><br /><br /><br />
                         <br /><br /><br /><br /><br /><br />
                         <br /><br /><br /><br /><br /><br /> */}
                     {listSesiSiswa.map((sesi, index) => (
                         <>
-                        <ul className={Styles.ul}>
-                            <img
-                                src={`${import.meta.env.VITE_SERVER}/get-img/${sesi.route_image}`}
-                                alt={sesi.route_image}
-                                className={Styles.image}
-                            />
-                            <li><h4 className={Styles.title}>Judul: {sesi.title}</h4></li>
-                            <li><h4 className={Styles.genre}>Genre: {sesi.genre}</h4></li>
-                        </ul>
+                            <ul className={Styles.ul}>
+                                <img
+                                    src={`${import.meta.env.VITE_SERVER}/get-img/${sesi.route_image}`}
+                                    alt={sesi.route_image}
+                                    className={Styles.image}
+                                />
+                                <li><h4 className={Styles.title}>Judul: {sesi.title}</h4></li>
+                                <li><h4 className={Styles.genre}>Genre: {sesi.genre}</h4></li>
+                                <li><h4 className={Styles.title}>oleh: {sesi.nickName}</h4></li>
+                                <li><h4 className={Styles.genre}>kelas: {sesi.class}</h4></li>
+                                <div class={gaya.wrap}>
+                                    <button class={gaya.button}>Kunjungi</button>
+                                </div>
+                            </ul>
                         </>
                     ))}
                 </div>

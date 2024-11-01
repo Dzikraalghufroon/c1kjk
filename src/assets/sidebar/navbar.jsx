@@ -46,10 +46,18 @@ const Navbar = () => {
     const [modalOpen, setModalOpen] = useState(false);
     const [message, setMessage] = useState("");
 
-    const handleButtonClick = (value) => {
+    const handleButtonClickClose = () => {
         setModalOpen(false);
-        setMessage(value);
     };
+    const handleButtonClickLogout = async() => {
+        try {
+            await axios.get(`${import.meta.env.VITE_SERVER}/api/validation/logout`,{ withCredentials: true });
+            navigate('/login');
+        } catch (error) {
+            console.error('Logout failed:', error);
+        }
+    };
+
     return (
         <>
             <div className="navbar-animmenu">
@@ -148,13 +156,12 @@ const Navbar = () => {
             {modalOpen &&
                 createPortal(
                     <Modal
-                        closeModal={handleButtonClick}
-                        onSubmit={handleButtonClick}
-                        onCancel={handleButtonClick}
+                        closeModal={handleButtonClickClose}
+                        onSubmit={handleButtonClickLogout}
+                        onCancel={handleButtonClickClose}
                     >
-                        <h2 style={{color: "black"}}>This is a modal</h2>
+                        <h2 style={{ color: "black" }}>Apakah anda yakin untuk Keluar</h2>
                         <br />
-                        <p style={{color: "black"}}>This is the modal description</p>
                     </Modal>,
                     document.body
                 )}

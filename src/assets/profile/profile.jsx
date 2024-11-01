@@ -75,9 +75,9 @@ const CircleButtons = () => {
 
   return (
     <>
-    <div class={gaya.wrap}>
+    {/* <div class={gaya.wrap}>
       <button class={gaya.button}>Logout</button>
-    </div><br /><br /><br />
+    </div><br /><br /><br /> */}
       <img src={Buyahamka} alt="Buya Hamka" className={Styles.BuyaHamka} />
       <h6 className={Styles.Kata}>
         Kesuksesan bukan hanya tentang <br />

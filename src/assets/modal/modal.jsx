@@ -23,16 +23,16 @@ export const Modal = ({ onSubmit, onCancel, closeModal, children }) => {
           <button
             type="submit"
             className="btn btn-submit"
-            onClick={() => onSubmit("Submit button was clicked")}
+            onClick={() => onSubmit()}
           >
-            Submit
+            Logout
           </button>
           <button
             type="submit"
             className="btn btn-cancel"
-            onClick={() => onCancel("Cancel button was clicked")}
+            onClick={() => onCancel()}
           >
-            Cancel
+            Batal
           </button>
         </div>
       </div>
