@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import Styles from "./search.module.css"
 
 const SearchFunction = () => {
     const navigate = useNavigate();
@@ -8,32 +9,33 @@ const SearchFunction = () => {
     const [query, setQuery] = useState("");
     const [isLoading, setIsLoading] = useState(true);  // For loading state
     const [searchFound, setSearchFound] = useState(false);  // To track if the search result exists
+    const { Searchquery } = useParams()
 
     useEffect(() => {
         // Ambil query search dari URL
         const urlParams = new URLSearchParams(window.location.search);
         const searchQuery = urlParams.get("search");
-        setQuery(searchQuery);
+
+        // setQuery(searchQuery);
+        setQuery(Searchquery)
 
         const fetchListSearchQuery = async () => {
-            if (searchQuery) {
+            if (Searchquery) {
                 try {
-                    const response = await axios.get(`${import.meta.env.VITE_SERVER}/api/search/konten/${searchQuery}`);
-                    setListSesiSiswa(response.data);
-                    setIsLoading(false); // Set loading state to false once data is fetched
-
-                    // Check if search has results
-                    if (response.data.stat === true && response.data.length > 0) {
-                        setSearchFound(true);  // Mark search as found
+                    const response = await axios.get(`${import.meta.env.VITE_SERVER}/api/search/konten/${Searchquery}`, { withCredentials: true });
+                    setListSesiSiswa(response.data.result);
+                    setIsLoading(false);
+                    if (response.data.stat === false && response.data.result === 0) {
+                        setSearchFound(false);
                     } else {
-                        setSearchFound(false);  // Mark search as not found
+                        setSearchFound(true);
                     }
                 } catch (error) {
                     console.error('Error:', error);
-                    setIsLoading(false); // Set loading state to false even if error occurs
+                    setIsLoading(false);
                 }
             } else {
-                setIsLoading(false); // If no searchQuery provided
+                setIsLoading(false);
             }
         };
 
@@ -46,15 +48,31 @@ const SearchFunction = () => {
 
     return (
         <div>
-            <h1>Hasil Pencarian untuk: {query}</h1>
+
             {searchFound ? (
-                <ul>
+                <div className={Styles.container}>
+                        {/* <br /><br /><br /><br /><br /><br />
+                        <br /><br /><br /><br /><br /><br />
+                        <br /><br /><br /><br /><br /><br /> */}
                     {listSesiSiswa.map((sesi, index) => (
-                        <li key={index}>{sesi.title}</li>
+                        <>
+                        <ul className={Styles.ul}>
+                            <img
+                                src={`${import.meta.env.VITE_SERVER}/get-img/${sesi.route_image}`}
+                                alt={sesi.route_image}
+                                className={Styles.image}
+                            />
+                            <li><h4 className={Styles.title}>Judul: {sesi.title}</h4></li>
+                            <li><h4 className={Styles.genre}>Genre: {sesi.genre}</h4></li>
+                        </ul>
+                        </>
                     ))}
-                </ul>
+                </div>
             ) : (
-                <h2>Tidak ada hasil yang ditemukan</h2>
+                <>
+                    <h1>Hasil Pencarian untuk: {query}</h1>
+                    <h2>Tidak ada hasil yang ditemukan</h2>
+                </>
             )}
         </div>
     );

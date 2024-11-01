@@ -87,7 +87,7 @@ const File_upload = () => {
                 className={styles.content}
                 ref={ref}
                 contentEditable
-                onInput={(e) => setFunction(e.target.innerHTML)} // Set soal with innerHTML
+                onInput={(e) => setFunction(e.target.innerHTML)} 
                 placeholder={placeholder}
                 suppressContentEditableWarning={true} // Avoid warnings about contentEditable
             ></div>

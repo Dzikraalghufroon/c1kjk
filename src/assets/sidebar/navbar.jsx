@@ -33,9 +33,12 @@ const Navbar = () => {
     //     navigate(`/result?search=${input}`)
     // }
     const SearchNavigateFunction = async (e) => {
-        e.preventDefault();  
+        // e.preventDefault();  
         if (input.trim() !== "") {
-            navigate(`/result?search=${input}`);
+            // e.preventDefault();  
+            // navigate(`/result?search=${input}`);
+            navigate(`/search/${input}`)
+            // e.preventDefault(); s 
         }
     };
     return (
@@ -113,6 +116,12 @@ const Navbar = () => {
                                 <a onClick={(() => navigate(-1))}>
                                     <i className="bx bx-bar-chart-alt-2 icon"></i>
                                     <span className="text nav-text">Kembali</span>
+                                </a>
+                            </li>
+                            <li className="nav-link">
+                                <a onClick={(() => navigate(-1))}>
+                                    <i className="bx bx-bar-chart-alt-2 icon"></i>
+                                    <span className="text nav-text">Logout</span>
                                 </a>
                             </li>
                         </ul>

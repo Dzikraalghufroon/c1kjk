@@ -11,6 +11,7 @@ import Profile from './assets/profile/profile';
 import Account from './page/profile/account';
 import Search from './page/search/search';
 import Upload from './page/Upload/upload';
+import Ujang from './assets/account/account'
 
 function App() {
 
@@ -23,7 +24,8 @@ function App() {
           <Route path='/login' element={<LoginForm />} />
           <Route path='/profile' element={<Account />} />
           <Route path='/profile/upload' element={<Upload />} />
-          <Route path='/result' element={<Search />} />
+          <Route path='/result' element={<Ujang />} />
+          <Route path="/search/:Searchquery" element={<Search />} />
         </Routes>
       </Router>
     </>

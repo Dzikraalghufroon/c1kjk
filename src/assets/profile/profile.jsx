@@ -6,6 +6,7 @@ import Mhatta from './mhatta.png'
 import { useEffect, useState } from "react";
 import Plus from "./plus-icon.png"
 import axios from "axios";
+import gaya from "./account.module.css"
 
 const CircleButtons = () => {
   const [name, setname] = useState("");
@@ -74,6 +75,9 @@ const CircleButtons = () => {
 
   return (
     <>
+    <div class={gaya.wrap}>
+      <button class={gaya.button}>Logout</button>
+    </div><br /><br /><br />
       <img src={Buyahamka} alt="Buya Hamka" className={Styles.BuyaHamka} />
       <h6 className={Styles.Kata}>
         Kesuksesan bukan hanya tentang <br />
@@ -112,6 +116,7 @@ const CircleButtons = () => {
           </li>
         </div><br /><br /><br /><h3 className={Styles.h3}>Ubah data anda</h3><br />
         <button class={Styles.button_49} role="button" onClick={(() => navigate(`/profile/@/${name}`))}>Ubah data</button>
+
       </div>
       <div className={Styles.container2}>
       </div>
