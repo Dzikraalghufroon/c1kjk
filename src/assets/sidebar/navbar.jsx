@@ -5,6 +5,8 @@ import home from './home.png'
 import profile from './profile.png'
 import setting from './setting.png'
 import search from './search.png'
+import { Modal } from '../modal/modal';
+import { createPortal } from "react-dom";
 import axios from 'axios';
 // import SearchNavigateFunction from '../search/search';
 
@@ -41,6 +43,13 @@ const Navbar = () => {
             // e.preventDefault(); s 
         }
     };
+    const [modalOpen, setModalOpen] = useState(false);
+    const [message, setMessage] = useState("");
+
+    const handleButtonClick = (value) => {
+        setModalOpen(false);
+        setMessage(value);
+    };
     return (
         <>
             <div className="navbar-animmenu">
@@ -62,11 +71,11 @@ const Navbar = () => {
                     <li className='search-input'>
                         <div>
                             <form onSubmit={SearchNavigateFunction} method='get'>
-                                <input 
-                                type="text" 
-                                placeholder='     search ' 
-                                value={input}
-                                onChange={(e) => setinput(e.target.value)}
+                                <input
+                                    type="text"
+                                    placeholder='     search '
+                                    value={input}
+                                    onChange={(e) => setinput(e.target.value)}
                                 />
                                 <button type="submit"><img src={search} alt="" /></button>
                             </form>
@@ -119,7 +128,7 @@ const Navbar = () => {
                                 </a>
                             </li>
                             <li className="nav-link">
-                                <a onClick={(() => navigate(-1))}>
+                                <a onClick={() => setModalOpen(true)}>
                                     <i className="bx bx-bar-chart-alt-2 icon"></i>
                                     <span className="text nav-text">Logout</span>
                                 </a>
@@ -136,6 +145,19 @@ const Navbar = () => {
                     <li><a href=""><img src={search} alt="" /></a></li>
                 </ul>
             </div>
+            {modalOpen &&
+                createPortal(
+                    <Modal
+                        closeModal={handleButtonClick}
+                        onSubmit={handleButtonClick}
+                        onCancel={handleButtonClick}
+                    >
+                        <h2 style={{color: "black"}}>This is a modal</h2>
+                        <br />
+                        <p style={{color: "black"}}>This is the modal description</p>
+                    </Modal>,
+                    document.body
+                )}
         </>
     );
 };
