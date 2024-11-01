@@ -13,18 +13,23 @@
   .modal {
     border-radius: 5px;
     padding: 2rem;
+    border-radius: 30px;
     background-color: white;
     width: 30em;
   }
   
   .btn-submit {
-    background-color: #062acc;
+    /* background-color: #062acc; */
+    background: linear-gradient(135deg, #9f07ce, #b020db);
   }
   
   .btn-cancel {
-    background-color: #00db12;
+    background: linear-gradient(135deg, #0764ce, #0022e6);
   }
-  
+  .btn-submit:hover,
+  .btn-cancel:hover{
+    background: linear-gradient(135deg, #24632c, #204cdb);
+  }
   .close {
     cursor: pointer;
   }

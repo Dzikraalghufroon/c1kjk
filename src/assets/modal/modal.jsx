@@ -1,8 +1,15 @@
 import React from "react";
 
 import "./modal.css";
+import logout from "./logout.png"
 
 export const Modal = ({ onSubmit, onCancel, closeModal, children }) => {
+  const myStyle = {
+    maxWidth:"10%",
+    position:"absolute",
+    top:"195px",
+    left:"45%"
+  };
   return (
     <div
       className="modal-container"
@@ -18,7 +25,7 @@ export const Modal = ({ onSubmit, onCancel, closeModal, children }) => {
         >
           <p className="close">&times;</p>
         </div>
-        <div className="modal-content">{children}</div>
+        <div className="modal-content"><br /><br /><img src={logout} alt="image" style={myStyle}/>{children}</div>
         <div className="modal-footer">
           <button
             type="submit"

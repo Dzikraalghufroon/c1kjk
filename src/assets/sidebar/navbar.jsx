@@ -159,9 +159,9 @@ const Navbar = () => {
                         closeModal={handleButtonClickClose}
                         onSubmit={handleButtonClickLogout}
                         onCancel={handleButtonClickClose}
-                    >
+                    ><br />
                         <h2 style={{ color: "black" }}>Apakah anda yakin untuk Keluar</h2>
-                        <br />
+                    
                     </Modal>,
                     document.body
                 )}
